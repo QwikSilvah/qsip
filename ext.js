@@ -58,20 +58,21 @@ const ext = {
     getDay(epoch) {
         const x = new Date(epoch).getUTCDay();
         switch (x) {
-            case 0: return "Monday";
+            case 0: return "Sunday";
                 break;
-            case 1: return "Tuesday";
+            case 1: return "Monday";
                 break;
-            case 2: return "Wednesday";
+            case 2: return "Tuesday";
                 break;
-            case 3: return "Thursday";
+            case 3: return "Wednesday";
                 break;
-            case 4: return "Friday";
+            case 4: return "Thursday";
                 break;
-            case 5: return "Saturday";
+            case 5: return "Friday";
                 break;
-            case 6: return "Sunday";
+            case 6: return "Saturday";
                 break;
+            
             default: return "";
         }
     },
