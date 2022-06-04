@@ -1,0 +1,69 @@
+﻿body {
+}
+
+/*.container {
+    max-width: 50%;
+}*/
+
+li span {
+    display: inline-block;
+    width: 150px;
+}
+
+.close-btn {
+    background-color: lightblue;
+}
+
+
+    .close-btn:hover {
+        background-color: red;
+    }
+
+.add:hover {
+    background-color: lightblue;
+}
+
+.number {
+    max-width: 2.5em;
+}
+
+.total {
+    display: inline-block;
+}
+
+.extract {
+    /*width: 45%;*/
+    /*background-color: lightblue;*/
+}
+
+    .extract:hover {
+        background-color: blue;
+        color: black;
+    }
+
+.next {
+    /*float: right;*/
+}
+
+.previous:hover, .next:hover {
+    background-color: lightblue;
+}
+
+.time {
+    display: inline-block;
+    text-align: center;
+}
+
+.selected {
+    font-weight: bold;
+    color: green;
+}
+
+.rejected
+{
+    color: red;
+}
+
+.clear-history {
+    text-align: center;
+}
