@@ -34,6 +34,8 @@ li span {
 .extract {
     /*width: 45%;*/
     /*background-color: lightblue;*/
+    color: black;
+    font-weight: bold;
 }
 
     .extract:hover {
