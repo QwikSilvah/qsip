@@ -143,8 +143,8 @@ function renderHTML(index=0) {
     //const rejection = resObj.rejection;
     //const time = resObj.time;
     console.log("create html");
-        
-    v.time.innerHTML = ext.howLongAgo(time);
+
+    v.time.innerHTML = `${ext.howLongAgo(time)} (${currentStorageIndex + 1}/${ips.length})`;
         
     for (let item of selected) {
         v.results.innerHTML += `<p class="selected">${item}</p>`
