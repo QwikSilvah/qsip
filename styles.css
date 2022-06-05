@@ -1,6 +1,10 @@
 ﻿body {
 }
 
+* {
+    box-sizing: border-box;
+}
+
 /*.container {
     max-width: 50%;
 }*/
@@ -18,6 +22,10 @@ li span {
     .close-btn:hover {
         background-color: red;
     }
+
+.add {
+    margin-left: .3em;
+}
 
 .add:hover {
     background-color: lightblue;
@@ -65,7 +73,15 @@ li span {
 {
     color: red;
 }
+/**/
+.edit-item, .remove-history-item {
+    /*margin-left: 0;
+    margin-right: 0;*/
+    /*box-sizing: border-box;
+    margin: 0;*/
+}
 
 .clear-history {
     text-align: center;
+    margin-left: .1em;
 }
