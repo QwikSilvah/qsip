@@ -198,8 +198,8 @@ function extract() {
     console.log(resObj);
     console.log(ips);
     ips.unshift(resObj);
-    if (ips.length > 10) {
-        ips.length = 10;
+    if (ips.length > 30) {
+        ips.length = 30;
     }
     console.log(ips);
 
