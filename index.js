@@ -237,6 +237,7 @@ function onChange() {
     //    v.selections.value = getList().length - 1;
     //}
     v.total.innerHTML = listLength;
+    v.input.setAttribute("autofocus", "true"); //git
 }
 
 function getValues() {
