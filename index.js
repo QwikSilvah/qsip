@@ -18,6 +18,8 @@ let timeOnClick;
 //    timeOnClick = ips[currentStorageIndex].time
 //}
 
+let editInput;
+
 const v = {
     list: d.querySelector(".list"),
     input: d.querySelector(".input"),
@@ -79,7 +81,7 @@ v.next.addEventListener("click", showNext);
 v.historyEdit.addEventListener("click", editHistory);
 v.historyRemove.addEventListener("click", removeHistoryItem);
 v.historyClear.addEventListener("click", clearHistory);
-
+d.body.addEventListener("click", saveEdit);
 
 
 //if (ips.length) {
@@ -124,6 +126,9 @@ function removeItem(event) {
 function checkKey(event) {
     event.preventDefault();
     if (event.key !== "Enter") return;
+    //if (editListItem) {
+    //    saveEdit();
+    //}
     if (!event.shiftKey) {
         addItem();
         return;
@@ -230,14 +235,22 @@ function onRemove() {
 }
 
 function onChange() {
-    const listLength = getList().length
+    const list = getList();
+    const listLength = list.length
     const attribValue = listLength - 1;
     v.selections.setAttribute("max", attribValue);
     //if (getList().length > 2) {
     //    v.selections.value = getList().length - 1;
     //}
     v.total.innerHTML = listLength;
-    v.input.setAttribute("autofocus", "true"); //git
+
+    if (list.length) {
+        for (element of list) {
+            element.addEventListener("dblclick", raiseEdit);
+        }
+    }
+    //v.input.setAttribute("autofocus", "true");
+    v.input.focus();
 }
 
 function getValues() {
@@ -322,6 +335,22 @@ function hideHistoryArea() {
 
 function showHistoryArea() {
     v.showItem(v.historyNav, v.timeDisplay, v.results, v.historyModify);
+}
+
+function raiseEdit(event) {
+    event.preventDefault();
+    editInput = event.target;
+    editInput.innerHTML = `<input class="edit-list-item"  value=${editInput.innerHTML} style="width:100%;" autofocus>`;
+    //editInput.click();
+}
+
+function saveEdit(event) {    
+    event.preventDefault();    
+    const editListItem = d.querySelector(".edit-list-item") ? d.querySelector(".edit-list-item") : "";
+    if (!editListItem) return;
+    if (!editListItem.contains(event.target)) {
+        editInput.innerHTML = editListItem.value;
+    }
 }
 
 hideHistoryArea();
