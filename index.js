@@ -342,7 +342,7 @@ function raiseEdit(event) {
     editInput = event.target;
     editInput.innerHTML = `<input class="edit-list-item"  value=${editInput.innerHTML} style="width:100%;" autofocus>`;
     //editInput.click();
-    editInput.focus();
+    d.querySelector(".edit-list-item").focus();
 }
 
 function saveEdit(event) {    
