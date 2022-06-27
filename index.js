@@ -340,7 +340,7 @@ function showHistoryArea() {
 function raiseEdit(event) {
     event.preventDefault();
     editInput = event.target;
-    editInput.innerHTML = `<input class="edit-list-item"  value=${editInput.innerHTML} style="width:100%;" autofocus>`;
+    editInput.innerHTML = `<input class="edit-list-item"  value=${editInput.innerHTML} style="width:100%;" autofocus />`;
     //editInput.click();
     d.querySelector(".edit-list-item").focus();
 }
