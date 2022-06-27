@@ -69,8 +69,7 @@ li span {
     color: green;
 }
 
-.rejected
-{
+.rejected {
     color: red;
 }
 /**/
@@ -80,6 +79,16 @@ li span {
     /*box-sizing: border-box;
     margin: 0;*/
 }
+
+a.edit-item {
+    display: inline-block;
+    color: black;
+    border: .17em black solid;
+    text-decoration: none;
+    text-align: center;
+}
+
+
 
 .clear-history {
     text-align: center;

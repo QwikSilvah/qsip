@@ -290,6 +290,7 @@ function showNext() {
 
 function editHistory() {
     const input = ips[currentStorageIndex].input;
+    v.list.innerHTML = "";
     for (element of input) {
         v.list.innerHTML += `<li><span class="col-10">${element}</span> <button class="close-btn col-1" onclick="function removeItem () {event.target.parent.innerHTML = '';}"><i class="fa-solid fa-xmark"></i></button></li>`
     }
