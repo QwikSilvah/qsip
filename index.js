@@ -19,6 +19,7 @@ let timeOnClick;
 //}
 
 let editInput;
+let currentInputValue;
 
 const v = {
     list: d.querySelector(".list"),
@@ -26,6 +27,7 @@ const v = {
     addButton: d.querySelector(".add"),
     selections: d.querySelector(".number"),
     total: d.querySelector(".total"),
+    reset: d.querySelector(".qs-reset"),
     extractButton: d.querySelector(".extract"),
 
     historyNav: d.querySelector(".history-nav"),
@@ -72,15 +74,21 @@ const v = {
 
 v.addButton.addEventListener("click", addItem);
 d.body.addEventListener("keyup", checkKey);
-d.body.addEventListener("click", removeItem);
+//d.body.addEventListener("click", removeItem);
+
+v.reset.addEventListener("click", resetInputArea);
+
 v.extractButton.addEventListener("click", extract);
+
 //v.time.addEventListener("mouseover", showTime);
 v.time.addEventListener("click", toggleTimeDisplay);
 v.previous.addEventListener("click", showPrevious);
 v.next.addEventListener("click", showNext);
+
 v.historyEdit.addEventListener("click", editHistory);
 v.historyRemove.addEventListener("click", removeHistoryItem);
 v.historyClear.addEventListener("click", clearHistory);
+
 d.body.addEventListener("click", saveEdit);
 
 
@@ -101,7 +109,7 @@ function addItem(event) {
     if (v.input.value === "") return;
 
     const newItem = d.createElement("li");
-    newItem.innerHTML = `<span class="col-10">${v.input.value}</span> <button class="close-btn col-1" onclick="function removeItem () {event.target.parent.innerHTML = '';}"><i class="fa-solid fa-xmark"></i></button>`;
+    newItem.innerHTML = `<span class="col-10">${v.input.value}</span> <button class="close-btn col-1"><i class="fa-solid fa-xmark"></i></button>`;
     v.list.append(newItem);     
     
     v.input.value = "";
@@ -114,13 +122,13 @@ function removeItem(event) {
     event.preventDefault();    
     const itemlist = getList();
     for (let item of itemlist) {
-        if (item.querySelector(".close-btn").contains(event.target)) {
+        if (!item.querySelector(".close-btn")) return;
+        if (item.contains(event.target)) {
             item.remove();
+            onRemove();
+            onChange();
         }
-    }
-
-    onRemove();
-    onChange();
+    }        
 }
 
 function checkKey(event) {
@@ -246,11 +254,45 @@ function onChange() {
 
     if (list.length) {
         for (element of list) {
-            element.addEventListener("dblclick", raiseEdit);
+            //console.log(element, element.firstChild);
+            element.firstChild.addEventListener("dblclick", raiseEdit);
         }
+        v.reset.removeAttribute("disabled");
     }
+    else {
+        v.reset.setAttribute("disabled", "true");
+    }
+
     //v.input.setAttribute("autofocus", "true");
-    //v.input.focus();
+    v.input.focus();
+
+    for (element of d.querySelectorAll(".close-btn")) {
+        element.addEventListener("click", removeItem, false);
+    }
+
+    console.log("onChange called");
+}
+
+function resetInputArea() {
+    if (!confirm("Clear items?")) return;
+
+    let amount = 0;
+    let increment = 90;
+
+    removeOne();
+    timer = window.setInterval(removeOne, 20);
+    function removeOne() {
+        if (getList().length) {
+            getList()[0].remove();
+            v.reset.style.transform = `rotate(${amount}deg)`;
+            amount += increment;
+            onChange();
+        }
+        else {
+            window.clearInterval(timer);
+            v.reset.style.transform = "rotate(0deg)";
+        }
+    }      
 }
 
 function getValues() {
@@ -292,7 +334,7 @@ function editHistory() {
     const input = ips[currentStorageIndex].input;
     v.list.innerHTML = "";
     for (element of input) {
-        v.list.innerHTML += `<li><span class="col-10">${element}</span> <button class="close-btn col-1" onclick="function removeItem () {event.target.parent.innerHTML = '';}"><i class="fa-solid fa-xmark"></i></button></li>`
+        v.list.innerHTML += `<li><span class="col-10">${element}</span> <button class="close-btn col-1"><i class="fa-solid fa-xmark"></i></button></li>`
     }
     v.extractButton.removeAttribute("disabled");
 
@@ -305,6 +347,10 @@ function editHistory() {
     }
 
     window.setTimeout(scrollToTop, 500);
+    v.input.focus();
+    v.reset.removeAttribute("disabled");
+
+    onChange();
 }
 
 function removeHistoryItem() {
@@ -351,9 +397,12 @@ function showHistoryArea() {
 function raiseEdit(event) {
     event.preventDefault();
     editInput = event.target;
-    editInput.innerHTML = `<input class="edit-list-item"  value=${editInput.innerHTML} style="width:100%;" autofocus />`;
+    console.log(editInput);
+    currentInputValue = editInput.innerHTML;
+    editInput.innerHTML = `<input class="edit-list-item"  style="width:100%;" autofocus />`;
     //editInput.click();
     d.querySelector(".edit-list-item").focus();
+    d.querySelector(".edit-list-item").value = currentInputValue;
 }
 
 function saveEdit(event) {    
@@ -361,7 +410,7 @@ function saveEdit(event) {
     const editListItem = d.querySelector(".edit-list-item") ? d.querySelector(".edit-list-item") : "";
     if (!editListItem) return;
     if (!editListItem.contains(event.target)) {
-        editInput.innerHTML = editListItem.value;
+        editInput.innerHTML = editListItem.value ? editListItem.value : currentInputValue;
     }
 }
 

@@ -91,6 +91,7 @@ const ext = {
             timer = setTimeout(() => { func.apply(this, args); }, timeout);
         };
     }
+       
 }
 
 
