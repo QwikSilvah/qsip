@@ -295,11 +295,16 @@ function editHistory() {
         v.list.innerHTML += `<li><span class="col-10">${element}</span> <button class="close-btn col-1" onclick="function removeItem () {event.target.parent.innerHTML = '';}"><i class="fa-solid fa-xmark"></i></button></li>`
     }
     v.extractButton.removeAttribute("disabled");
-    window.scroll({
-        top: 0,
-        left: 0,
-        behavior: "smooth"
-    });
+
+    function scrollToTop() {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        });
+    }
+
+    window.setTimeout(scrollToTop, 5000);
 }
 
 function removeHistoryItem() {

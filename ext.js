@@ -58,6 +58,7 @@ const ext = {
     getDay(epoch) {
         const x = new Date(epoch).getUTCDay();
         switch (x) {
+
             case 0: return "Sunday";
                 break;
             case 1: return "Monday";
@@ -81,6 +82,14 @@ const ext = {
         const time = new Date(epoch).toTimeString().split("+")[0];
         return time;
         //review
+    },
+
+    debounce(func, timeout = 1000){
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+        };
     }
 }
 
