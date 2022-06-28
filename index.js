@@ -304,7 +304,7 @@ function editHistory() {
         });
     }
 
-    window.setTimeout(scrollToTop, 5000);
+    window.setTimeout(scrollToTop, 500);
 }
 
 function removeHistoryItem() {
