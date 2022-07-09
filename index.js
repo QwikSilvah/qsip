@@ -280,7 +280,7 @@ function resetInputArea() {
     let increment = 90;
 
     removeOne();
-    timer = window.setInterval(removeOne, 20); //git
+    timer = window.setInterval(removeOne, 20);
     function removeOne() {
         if (getList().length) {
             getList()[0].remove();
