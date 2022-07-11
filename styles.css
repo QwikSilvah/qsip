@@ -2,33 +2,77 @@
 }
 
 * {
-    box-sizing: border-box;
+    /*margin: 0;*/
+    box-sizing: border-box !important;
 }
 
 .container.main {
     max-width: 720px;
 }
 
-li span {
+button {
+    border-radius: 5px;
+    height: 100%;
+    /*justify-self: baseline;*/
+}
+
+.input-area {
+    /*justify-content: end;*/
+}
+
+.input-area .input {
+    margin: 0px;
+    border-radius: 5px;
+}
+
+.input-area .add {
+    margin: -1px;
+}
+
+.input-area .add:hover {
+    background-color: rgb(55, 206, 201, .5);
+    color: black;
+}
+
+.list li:nth-child(even) {
+    /*background-color: rgba(128, 128, 128, .05;*/
+}
+
+.list li {
+    line-height: 2em;
+    
+}
+
+.list li span.row {
+    display: block;
+    /*width: 150px;*/
+}
+
+.list li span.row span{
     display: inline-block;
-    width: 150px;
+    margin-right: -5px;
+    /*width: 150px;*/
 }
 
 .close-btn {
     background-color: lightblue;
+    margin: 0px;
+    margin-bottom: .1em;
+    padding: 0px;
+    border-radius: 4px;
+    /*height: 90%;*/
 }
 
-
-    .close-btn:hover {
-        background-color: red;
-    }
+.close-btn:hover {
+background-color: red;
+}
 
 .add {
-    margin-left: .3em;
+    /*margin-left: .3em;*/
 }
 
 .add:hover {
-    background-color: lightblue;
+    /*background-color: green;*/
 }
 
 .number {
@@ -47,8 +91,9 @@ li span {
 }
 
     .extract:hover {
-        background-color: blue;
+        background-color: rgba(55, 206, 201, .5);
         color: black;
+        border: 2px solid black;
     }
 
 .next {
@@ -56,7 +101,8 @@ li span {
 }
 
 .previous:hover, .next:hover {
-    background-color: lightblue;
+    background-color: rgba(55, 206, 201, .5);
+    color: black;
 }
 
 .time {
@@ -80,6 +126,11 @@ li span {
     margin: 0;*/
 }
 
+.edit-item:hover {
+    background-color: rgba(55, 206, 201, .5);
+
+}
+
 a.scroll-up {
     display: inline-block;
     color: black;
@@ -88,9 +139,16 @@ a.scroll-up {
     text-align: center;
 }
 
-
+.remove-history-item:hover {
+    background-color: rgb(241, 242, 137, .5);
+    color: black;
+}
 
 .clear-history {
     text-align: center;
     margin-left: .1em;
+}
+
+.clear-history:hover {
+    background-color: red;
 }
