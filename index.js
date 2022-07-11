@@ -109,7 +109,8 @@ function addItem(event) {
     if (v.input.value === "") return;
 
     const newItem = d.createElement("li");
-    newItem.innerHTML = `<span class="col-10">${v.input.value}</span> <button class="close-btn col-1"><i class="fa-solid fa-xmark"></i></button>`;
+    //newItem.classList.add("");
+    newItem.innerHTML = `<span class="row"><span class="col-11">${v.input.value}</span> <button class="close-btn col-1"><i class="fa-solid fa-xmark"></i></button></span>`;
     v.list.append(newItem);     
     
     v.input.value = "";
@@ -157,7 +158,7 @@ function renderHTML(index=0) {
     //const time = resObj.time;
     console.log("create html");
 
-    v.time.innerHTML = `${ext.howLongAgo(time)} (${currentStorageIndex + 1}/${ips.length})`;
+    v.time.innerHTML = `${ext.howLongAgo(time)} (${currentStorageIndex + 1}/${ips.length})`;    
         
     for (let item of selected) {
         v.results.innerHTML += `<p class="selected">${item}</p>`
@@ -173,6 +174,9 @@ function renderHTML(index=0) {
 
     timeOnClick = `${new Date(time).toDateString()} at ${ext.getTime(time)}`;
     v.timeDisplay.innerHTML = timeOnClick;
+    v.hideItem(v.timeDisplay);
+
+    onChange();
 }
 
 function extract() {
@@ -334,7 +338,7 @@ function editHistory() {
     const input = ips[currentStorageIndex].input;
     v.list.innerHTML = "";
     for (element of input) {
-        v.list.innerHTML += `<li><span class="col-10">${element}</span> <button class="close-btn col-1"><i class="fa-solid fa-xmark"></i></button></li>`
+        v.list.innerHTML += `<li class=""><span class="row"><span class="col-11">${element}</span> <button class="close-btn col-1"><i class="fa-solid fa-xmark"></i></button></span></li>`
     }
     v.extractButton.removeAttribute("disabled");
 
