@@ -30,11 +30,12 @@ button {
 .input-area .input {
     margin: 0px;
     border-radius: 5px;
-    width: 89%;
+    width: 88%
 }
 
 .input-area .add {
     margin: -1px;
+    width: 12%;
 }
 
 .input-area .add:hover {
