@@ -18,6 +18,7 @@ let timeOnClick;
 //    timeOnClick = ips[currentStorageIndex].time
 //}
 
+let timeDisplay = 0;
 let editInput;
 let currentInputValue;
 
@@ -232,6 +233,9 @@ function getList() {
 }
 
 function onAdd() {
+    if (getList().length < 2) {
+        showEditAlert();
+    }
     if (getList().length > 2) {
         v.selections.removeAttribute("disabled");
         v.extractButton.removeAttribute("disabled");
@@ -309,11 +313,18 @@ function getValues() {
 }
 
 function warningMsg() {
-    alert(`Unable to handle your request. Please make sure you entered everything correctly`);
+    dialogue.showModal({
+        header: `Unable to handle your request.`,
+        content: `Please make sure you entered everything correctly.`,
+        reject: "Ok"
+    });
+
 }
 
 function toggleTimeDisplay() {
     v.toggleItem(v.timeDisplay);
+    if (!timeDisplay) timeDisplay = 1;
+    else timeDisplay = 0;
 }
 
 function showPrevious() {
@@ -325,12 +336,18 @@ function showPrevious() {
     }
 
     v.next.removeAttribute("disabled");
+    if (timeDisplay) {
+        v.showItem(v.timeDisplay);
+    }
 }
 
 function showNext() {
     renderHTML(--currentStorageIndex);
     if (currentStorageIndex < 1) {
         v.next.setAttribute("disabled", "true");
+    }
+    if (timeDisplay) {
+        v.showItem(v.timeDisplay);
     }
 }
 
@@ -350,11 +367,28 @@ function editHistory() {
         });
     }
 
+    showEditAlert();
+
     window.setTimeout(scrollToTop, 500);
     v.input.focus();
     v.reset.removeAttribute("disabled");
 
     onChange();
+}
+
+function showEditAlert() {
+    const alertBox = d.createElement("div");
+    d.querySelector(".container.main").prepend(alertBox);
+    dialogue.showAlert(
+        {
+            target: alertBox,
+            alertClass: "primary",
+            content: "Double click item to edit",
+            close: true,
+            width: "100%",
+            duration: 3000
+        }
+    );
 }
 
 function removeHistoryItem() {
@@ -401,6 +435,12 @@ function showHistoryArea() {
 function raiseEdit(event) {
     event.preventDefault();
     editInput = event.target;
+    editInput.addEventListener("keyup", event => {
+        //event.preventDefault();        
+        if (event.keyCode === 13) {
+            d.body.click();
+        }
+    });
     console.log(editInput);
     currentInputValue = editInput.innerHTML;
     editInput.innerHTML = `<input class="edit-list-item"  style="width:100%;" autofocus />`;

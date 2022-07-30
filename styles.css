@@ -1,10 +1,17 @@
-﻿body {
-}
-
-* {
+﻿html {
     /*margin: 0;*/
     box-sizing: border-box !important;
 }
+
+*, :before, :after {
+    /*margin: 0;*/
+    box-sizing: inherit !important;
+}
+
+body {
+
+}
+
 
 .container.main {
     max-width: 720px;
@@ -34,13 +41,16 @@ button {
     color: black;
 }
 
+ol {
+    padding-left: 1rem;
+}
+
 .list li:nth-child(even) {
     /*background-color: rgba(128, 128, 128, .05;*/
 }
 
 .list li {
     line-height: 2em;
-    
 }
 
 .list li span.row {
@@ -55,12 +65,13 @@ button {
 }
 
 .close-btn {
-    background-color: lightblue;
+    background-color: white;
     margin: 0px;
     margin-bottom: .1em;
     padding: 0px;
     border-radius: 4px;
     /*height: 90%;*/
+    border: 0;
 }
 
 .close-btn:hover {
@@ -152,4 +163,3 @@ a.scroll-up {
 .clear-history:hover {
     background-color: red;
 }
-
