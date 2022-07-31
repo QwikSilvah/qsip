@@ -1,10 +1,8 @@
-﻿html {
-    /*margin: 0;*/
+﻿html {    
     box-sizing: border-box !important;
 }
 
 *, :before, :after {
-    /*margin: 0;*/
     box-sizing: inherit !important;
 }
 
@@ -20,7 +18,6 @@ body {
 button {
     border-radius: 5px;
     height: 100%;
-    /*justify-self: baseline;*/
 }
 
 .input-container {
@@ -30,7 +27,7 @@ button {
 }
 
 .input-area {
-    /*justify-content: end;*/
+    
 }
 
 .input-area .input {
@@ -53,8 +50,12 @@ ol {
     padding-left: 1rem;
 }
 
+ol.list {
+    /*background-color: white;*/
+}
+
 .list li:nth-child(even) {
-    /*background-color: rgba(128, 128, 128, .05;*/
+    
 }
 
 .list li {
@@ -63,22 +64,19 @@ ol {
 
 .list li span.row {
     display: block;
-    /*width: 150px;*/
 }
 
 .list li span.row span{
     display: inline-block;
     margin-right: -5px;
-    /*width: 150px;*/
 }
 
 .close-btn {
-    background-color: white;
+    /*background-color: white;*/
     margin: 0px;
-    margin-bottom: .1em;
+    margin-bottom: .0em;
     padding: 0px;
-    border-radius: 4px;
-    /*height: 90%;*/
+    border-radius: 0px;
     border: 0;
 }
 
@@ -87,11 +85,10 @@ background-color: red;
 }
 
 .add {
-    /*margin-left: .3em;*/
 }
 
 .add:hover {
-    /*background-color: green;*/
+
 }
 
 .number {
@@ -103,8 +100,6 @@ background-color: red;
 }
 
 .extract {
-    /*width: 45%;*/
-    /*background-color: lightblue;*/
     color: black;
     font-weight: bold;
 }
@@ -120,30 +115,19 @@ background-color: red;
     margin-bottom: 5px;
     padding: .5rem;
     border-radius: 10px;
+    background-color: white;
 }
 
 .result-area {
     width: 100%;    
 }
 
-/*.result-area .previous {
-    margin-top: 3px;
-    margin-left: 3px;
-    width: 24.5%;
-}
-
-.result-area .next {
-    margin-top: 2px;
-    margin-right: 2px;
-    width: 24.5%;
-}*/
-
 .result-area .results {
     text-align: center;
 }
 
 .next {
-    /*float: right;*/
+    
 }
 
 .previous:hover, .next:hover {
@@ -166,19 +150,18 @@ background-color: red;
 }
 
 .footer-container {
+    margin: -10px;
+    margin-right: -10px;
     margin-top: 0px;
-    background-color: #dddddd;
+    background-color: #eeeeee;
     padding: 1rem;
     padding-bottom: 0;
     border-radius: 10px;
+    width: 103%;
 }
 
-/**/
 .edit-item, .remove-history-item {
-    /*margin-left: 0;
-    margin-right: 0;*/
-    /*box-sizing: border-box;
-    margin: 0;*/
+       
 }
 
 .edit-item:hover {

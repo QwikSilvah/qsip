@@ -11,12 +11,9 @@ else {
 }
 
 console.log(ips);
-//let items = [];
+
 let currentStorageIndex = 0;
 let timeOnClick;
-//if (ips.length) {
-//    timeOnClick = ips[currentStorageIndex].time
-//}
 
 let timeDisplay = 0;
 let editInput;
@@ -45,8 +42,7 @@ const v = {
     historyRemove: d.querySelector(".remove-history-item"),
     historyClear: d.querySelector(".clear-history"),
 
-    showItem(...items) {
-        //this.list.append(item);
+    showItem(...items) {        
         for (item of items) {
             if (item) {
                 item.style.display = "block";
@@ -75,7 +71,6 @@ const v = {
 
 v.addButton.addEventListener("click", addItem);
 d.body.addEventListener("keyup", checkKey);
-//d.body.addEventListener("click", removeItem);
 
 v.reset.addEventListener("click", () => dialogue.showModal({
     type: "confirm",
@@ -94,7 +89,6 @@ v.reset.addEventListener("click", () => dialogue.showModal({
 
 v.extractButton.addEventListener("click", validate);
 
-//v.time.addEventListener("mouseover", showTime);
 v.time.addEventListener("click", toggleTimeDisplay);
 v.previous.addEventListener("click", showPrevious);
 v.next.addEventListener("click", showNext);
@@ -118,7 +112,7 @@ v.historyClear.addEventListener("click", () => dialogue.showModal({
     type: "confirm",
     accept: "Yes",
     reject: "No",
-    header: "Clear entire history?",
+    header: "Clear Entire History?",
     content: "This action cannot be reversed",
     callback: () => {
         if (document.querySelector(".corroborate")) {
@@ -132,24 +126,10 @@ v.historyClear.addEventListener("click", () => dialogue.showModal({
 d.body.addEventListener("click", saveEdit);
 
 
-//if (ips.length) {
-//    v.time.innerHTML = `<span title="${ips[index].time.toDateString}">${ext.howLongAgo(ips[index].time)}<span>`;
-//    const [selection, rejection] = [ips[index].selection, ips[index].rejection];
-//    console.log("create html");
-//    for (let item of selection) {
-//        v.results.innerHTML += `<p class="selected">${item}</p>`
-//    }
-//    for (let item of rejection) {
-//        v.results.innerHTML += `<p class="rejected">${item}</p>`
-//    }
-//    console.log("created");
-//}
-
 function addItem(event) {
     if (v.input.value === "") return;
 
     const newItem = d.createElement("li");
-    //newItem.classList.add("");
     newItem.innerHTML = `<span class="row"><span class="col-11">${v.input.value}</span> <button class="close-btn col-1"><i class="fa-solid fa-xmark"></i></button></span>`;
     v.list.append(newItem);     
     
@@ -175,9 +155,6 @@ function removeItem(event) {
 function checkKey(event) {
     event.preventDefault();
     if (event.key !== "Enter") return;
-    //if (editListItem) {
-    //    saveEdit();
-    //}
     if (!event.shiftKey) {
         addItem();
         return;
@@ -193,9 +170,6 @@ function renderHTML(index=0) {
 
     const resObj = ips[index];
     const { selected, rejected, time, input } = resObj;
-    //const selection = resObj.selection;
-    //const rejection = resObj.rejection;
-    //const time = resObj.time;
     console.log("create html");
 
     v.time.innerHTML = `${ext.howLongAgo(time)} (${currentStorageIndex + 1}/${ips.length})`;    
@@ -311,14 +285,11 @@ function onChange() {
     const listLength = list.length
     const attribValue = listLength - 1;
     v.selections.setAttribute("max", attribValue);
-    //if (getList().length > 2) {
-    //    v.selections.value = getList().length - 1;
-    //}
+    
     v.total.innerHTML = listLength;
 
     if (list.length) {
         for (element of list) {
-            //console.log(element, element.firstChild);
             element.firstChild.addEventListener("dblclick", raiseEdit);
         }
         v.reset.removeAttribute("disabled");
@@ -327,7 +298,6 @@ function onChange() {
         v.reset.setAttribute("disabled", "true");
     }
 
-    //v.input.setAttribute("autofocus", "true");
     v.input.focus();
 
     for (element of d.querySelectorAll(".close-btn")) {
@@ -481,18 +451,17 @@ function checkHistory() {
 }
 
 function hideHistoryArea() {
-    v.hideItem(v.historyNav, v.timeDisplay, v.results, v.historyModify);
+    v.hideItem(d.querySelector(".result-container"), d.querySelector(".footer-container"));
 }
 
 function showHistoryArea() {
-    v.showItem(v.historyNav, v.timeDisplay, v.results, v.historyModify);
+    v.showItem(d.querySelector(".result-container"), d.querySelector(".footer-container"));
 }
 
 function raiseEdit(event) {
     event.preventDefault();
     editInput = event.target;
     editInput.addEventListener("keyup", event => {
-        //event.preventDefault();        
         if (event.keyCode === 13) {
             d.body.click();
         }
@@ -500,7 +469,6 @@ function raiseEdit(event) {
     console.log(editInput);
     currentInputValue = editInput.innerHTML;
     editInput.innerHTML = `<input class="edit-list-item"  style="width:100%;" autofocus />`;
-    //editInput.click();
     d.querySelector(".edit-list-item").focus();
     d.querySelector(".edit-list-item").value = currentInputValue;
 }
