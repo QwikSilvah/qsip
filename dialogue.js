@@ -29,9 +29,7 @@ const dialogue = {
 
     },        
     
-    showModal({ type, accept, reject, header, content, width }) {
-        dialogue.confirm = false;
-
+    showModal({ type, alertClass, accept, reject, header, content, callback }) {
         const modalActivateButton = document.querySelector(".lasso-modal");
 
         //header
@@ -64,12 +62,8 @@ const dialogue = {
 
         modalActivateButton.click();
 
-        if (document.querySelector(".corroborate")) {
-            document.querySelector(".corroborate").addEventListener("click", (event) => {
-                /*console.log(event);*/
-                event.preventDefault();
-                return dialogue.confirm = true;
-            });
+        if (callback) {
+            callback();
         }
     },
 }

@@ -23,6 +23,12 @@ button {
     /*justify-self: baseline;*/
 }
 
+.input-container {
+    background-color: #eeeeee;
+    padding: 1.5rem;
+    border-radius: 10px;    
+}
+
 .input-area {
     /*justify-content: end;*/
 }
@@ -109,6 +115,33 @@ background-color: red;
         border: 2px solid black;
     }
 
+.result-container {    
+    margin-top: 0px;
+    margin-bottom: 5px;
+    padding: .5rem;
+    border-radius: 10px;
+}
+
+.result-area {
+    width: 100%;    
+}
+
+/*.result-area .previous {
+    margin-top: 3px;
+    margin-left: 3px;
+    width: 24.5%;
+}
+
+.result-area .next {
+    margin-top: 2px;
+    margin-right: 2px;
+    width: 24.5%;
+}*/
+
+.result-area .results {
+    text-align: center;
+}
+
 .next {
     /*float: right;*/
 }
@@ -131,6 +164,15 @@ background-color: red;
 .rejected {
     color: red;
 }
+
+.footer-container {
+    margin-top: 0px;
+    background-color: #dddddd;
+    padding: 1rem;
+    padding-bottom: 0;
+    border-radius: 10px;
+}
+
 /**/
 .edit-item, .remove-history-item {
     /*margin-left: 0;
@@ -160,8 +202,13 @@ a.scroll-up {
 .clear-history {
     text-align: center;
     margin-left: .1em;
+    margin-top: .5rem;
 }
 
 .clear-history:hover {
     background-color: red;
+}
+
+.modal {
+    /*padding-top: 25vh;*/
 }
