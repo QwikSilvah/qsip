@@ -163,13 +163,6 @@ background-color: red;
     border-top: none;    
 }
 
-/* Medium devices (landscape tablets, 768px and lower) */
-/*@media only screen and (max-width: 768px) {
-    .footer-container {
-        width: 104%;
-    }
-}*/
-
 .edit-item, .remove-history-item {
        
 }
@@ -204,4 +197,11 @@ a.scroll-up {
 
 .modal {
     /*padding-top: 25vh;*/
+}
+
+/* Medium devices (landscape tablets, 768px and lower) */
+@media only screen and (max-width: 400px) {
+    .previous span, .next span {
+        display: none;
+    }
 }
