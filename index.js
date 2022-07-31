@@ -269,7 +269,9 @@ function onAdd() {
     if (getList().length > 2) {
         v.selections.removeAttribute("disabled");
         v.extractButton.removeAttribute("disabled");
-    }    
+    }
+
+    v.input.focus();
 }
 
 function onRemove() {
@@ -278,6 +280,9 @@ function onRemove() {
         v.extractButton.setAttribute("disabled", "true");
     }
     v.total.innerHTML = getList().length;
+
+    v.input.focus();
+
 }
 
 function onChange() {
@@ -297,8 +302,6 @@ function onChange() {
     else {
         v.reset.setAttribute("disabled", "true");
     }
-
-    v.input.focus();
 
     for (element of d.querySelectorAll(".close-btn")) {
         element.addEventListener("click", removeItem, false);
@@ -396,7 +399,7 @@ function editHistory() {
     showEditAlert();
 
     window.setTimeout(scrollToTop, 500);
-    v.input.focus();
+    //v.input.focus();
     v.reset.removeAttribute("disabled");
 
     onChange();
@@ -468,7 +471,7 @@ function raiseEdit(event) {
     });
     console.log(editInput);
     currentInputValue = editInput.innerHTML;
-    editInput.innerHTML = `<input class="edit-list-item"  style="width:100%;" autofocus />`;
+    editInput.innerHTML = `<input class="edit-list-item"  style="width:100%;" />`;
     d.querySelector(".edit-list-item").focus();
     d.querySelector(".edit-list-item").value = currentInputValue;
 }
