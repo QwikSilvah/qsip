@@ -18,36 +18,51 @@
 <body>
     <section>
         <div class="container main container-sm p-4">
-            <ol class="list">
-            </ol>
-            <p class="input-area row">
-                <input class="input col-11" placeholder="Enter item..." pattern="d\{3,}" title="Enter at least three characters">
-                <button class="add col-1 btn-secondary"><i class="fa-solid fa-plus"></i></button>
-            </p>
-            <p>
-                <input type="number" class="number" min="0" value="2" disabled />
-                <span>of   </span><span class="total">0</span>
-                <button class="qs-reset" disabled><i class="fa-solid fa-refresh"></i></button>
-            </p>
-            <p class="row">
-                <button class="extract col-12 btn-primary" disabled>Select</button>
-            </p>
-            <p class="history-nav row">
-                <button class="previous col-3 btn-secondary" disabled><i class="fa-solid fa-backward"></i> Prev</button><span class="time col-6"></span><button class="next col-3 btn-secondary" disabled>Next <i class="fa-solid fa-forward"></i></button>
-            </p>
-            <p class="time-on-hover"></p>
-            <div class="results">
-
+            <!---->
+            <div class="input-container border border-2 container">
+                <div class="input-area-container">
+                    <ol class="list">
+                    </ol>
+                    <p class="input-area row">
+                        <input class="input col-11" placeholder="Enter item..." pattern="d\{3,}" title="Enter at least three characters">
+                        <button class="add col-1 btn-secondary"><i class="fa-solid fa-plus"></i></button>
+                    </p>
+                    <p>
+                        <input type="number" class="number" min="0" value="2" disabled />
+                        <span>of   </span><span class="total">0</span>
+                        <button class="qs-reset" disabled><i class="fa-solid fa-refresh"></i></button>
+                    </p>
+                    <p class="row">
+                        <button class="extract col-12 btn-primary" disabled>Select</button>
+                    </p>
+                </div>
             </div>
-            <div class="history-modify">
-                <p class="row">
-                    <button class="scroll-up edit-item col-4 btn-info" href=""><i class="fa-solid fa-pen-clip"></i> Edit</button>
-                    <button class="remove-history-item col-8 btn-secondary"><i class="fa-regular fa-trash-can"></i> Remove from History</button>
-                </p>
 
-                <p class="row">
-                    <button class="clear-history col-12 btn-light">Clear History</button>
-                </p>
+            <!---->
+            <div class="result-container border border-2 container">
+                <div class="result-area container">
+                    <p class="history-nav row">
+                        <button class="previous col-3 btn-secondary" disabled><i class="fa-solid fa-backward"></i> Prev</button><span class="time col-6"></span><button class="next col-3 btn-secondary" disabled>Next <i class="fa-solid fa-forward"></i></button>
+                    </p>
+                    <p class="time-on-hover"></p>
+                    <div class="results">
+
+                    </div>
+                </div>
+            </div>
+
+            <!---->
+            <div class="footer-container  border border-2 container">
+                <div class="history-modify">
+                    <p class="row">
+                        <button class="scroll-up edit-item col-4 btn-info" href=""><i class="fa-solid fa-pen-clip"></i> Edit</button>
+                        <button class="remove-history-item col-8 btn-secondary"><i class="fa-regular fa-trash-can"></i> Remove from History</button>
+                    </p>
+
+                    <p class="row">
+                        <button class="clear-history col-12 btn-light">Clear History</button>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -58,8 +73,8 @@
     </button>    
 
     <!-- The Modal -->
-    <div class="modal" id="myModal">
-        <div class="modal-dialog">
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
                 <!-- Modal Header -->

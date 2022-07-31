@@ -77,9 +77,22 @@ v.addButton.addEventListener("click", addItem);
 d.body.addEventListener("keyup", checkKey);
 //d.body.addEventListener("click", removeItem);
 
-v.reset.addEventListener("click", resetInputArea);
+v.reset.addEventListener("click", () => dialogue.showModal({
+    type: "confirm",
+    accept: "Yes",
+    reject: "No",
+    header: "Clear List?",
+    content: "Do you wish to remove all items?",
+    callback: () => {
+        if (document.querySelector(".corroborate")) {
+            document.querySelector(".corroborate").addEventListener("click", (event) => {
+                resetInputArea();
+            });
+        }
+    }
+}));
 
-v.extractButton.addEventListener("click", extract);
+v.extractButton.addEventListener("click", validate);
 
 //v.time.addEventListener("mouseover", showTime);
 v.time.addEventListener("click", toggleTimeDisplay);
@@ -87,8 +100,34 @@ v.previous.addEventListener("click", showPrevious);
 v.next.addEventListener("click", showNext);
 
 v.historyEdit.addEventListener("click", editHistory);
-v.historyRemove.addEventListener("click", removeHistoryItem);
-v.historyClear.addEventListener("click", clearHistory);
+v.historyRemove.addEventListener("click", () => dialogue.showModal({
+    type: "confirm",
+    accept: "Yes",
+    reject: "No",
+    header: "Remove From History?",
+    content: "This action cannot be reversed",
+    callback: () => {
+        if (document.querySelector(".corroborate")) {
+            document.querySelector(".corroborate").addEventListener("click", (event) => {
+                removeHistoryItem();
+            });
+        }
+    }
+}));
+v.historyClear.addEventListener("click", () => dialogue.showModal({
+    type: "confirm",
+    accept: "Yes",
+    reject: "No",
+    header: "Clear entire history?",
+    content: "This action cannot be reversed",
+    callback: () => {
+        if (document.querySelector(".corroborate")) {
+            document.querySelector(".corroborate").addEventListener("click", (event) => {
+                clearHistory();
+            });
+        }
+    }
+}));
 
 d.body.addEventListener("click", saveEdit);
 
@@ -143,7 +182,7 @@ function checkKey(event) {
         addItem();
         return;
     }
-    extract();
+    validate();
 }
 
 function renderHTML(index=0) {
@@ -180,17 +219,34 @@ function renderHTML(index=0) {
     onChange();
 }
 
-function extract() {
-    currentStorageIndex = 0
+function validate() {
     if (v.selections.value >= Number(v.total.innerText)) {
-        warningMsg();
-        return;
+        return warningMsg();;
     }
     if (v.selections.value < 2) {
-        warningMsg();
-        return;
+        return warningMsg();
     }
-    if (!confirm(`Do you wish to proceed?`)) return;
+    dialogue.showModal({
+        type: "confirm",
+        accept: "Yes",
+        reject: "No",
+        header: "Select Items?",
+        content: "Do you wish to proceed?",
+        callback: () => {
+            if (document.querySelector(".corroborate")) {
+                document.querySelector(".corroborate").addEventListener("click", (event) => {
+                    extract();
+                });
+            }
+        }
+    });
+}
+
+function extract() {
+    //if (!confirm("Do you wish to proceed?")) return;
+
+    currentStorageIndex = 0;
+    
     const selected = [];
     const rejected = [];
     const input = getValues();
@@ -282,7 +338,7 @@ function onChange() {
 }
 
 function resetInputArea() {
-    if (!confirm("Clear items?")) return;
+    //if (!confirm("Clear items?")) return;
 
     let amount = 0;
     let increment = 90;
@@ -392,7 +448,7 @@ function showEditAlert() {
 }
 
 function removeHistoryItem() {
-    if (!confirm("Remove item? This action cannot be undone")) return;
+    //if (!confirm("Remove item? This action cannot be undone")) return;
 
     ips.splice(currentStorageIndex, 1);
     if (ips[currentStorageIndex]) {
@@ -408,7 +464,7 @@ function removeHistoryItem() {
 }
 
 function clearHistory() {
-    if (!confirm("Clear entire history? This action cannot be undone")) return;
+    //if (!confirm("Clear entire history? This action cannot be undone")) return;
     ips.length = [];
     updateHistory();
     hideHistoryArea();
