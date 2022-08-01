@@ -81,8 +81,10 @@ v.reset.addEventListener("click", () => dialogue.showModal({
     header: "Clear List?",
     content: "Do you wish to remove all items?",
     styles: {
-        header: "primary",
-        footer: "light"
+        header: {
+            background: "info"
+        },
+        footer: "light",
     },
     callback: () => {
         if (document.querySelector(".corroborate")) {
@@ -107,7 +109,9 @@ v.historyRemove.addEventListener("click", () => dialogue.showModal({
     header: "Remove From History?",
     content: "This action cannot be reversed",
     styles: {
-        header: "warning",
+        header: {
+            background: "warning"
+        },
         footer: "light"
     },
     callback: () => {
@@ -125,7 +129,10 @@ v.historyClear.addEventListener("click", () => dialogue.showModal({
     header: "Clear Entire History?",
     content: "This action cannot be reversed",
     styles: {
-        header: "danger",
+        header: {
+            background: "danger",
+            text: "white"
+        },
         footer: "light"
     },
     callback: () => {
@@ -221,7 +228,10 @@ function validate() {
         header: "Select Items?",
         content: "Do you wish to proceed?",
         styles: {
-            header: "primary",
+            header: {
+                background: "primary",
+                text: "white"
+            },
             footer: "light"
         },
         callback: () => {
@@ -365,7 +375,9 @@ function warningMsg() {
         content: `Please make sure you entered everything correctly.`,
         reject: "Ok",
         styles: {
-            header: "warning",
+            header: {
+                background: "warning"
+            },
             footer: "light"
         }
     });
@@ -429,7 +441,9 @@ function editHistory() {
 
 function showEditAlert() {
     const alertBox = d.createElement("div");
-    d.querySelector(".container.main").prepend(alertBox);
+    alertBox.style.paddingTop = ".4rem";
+    alertBox.style.paddingBottom = ".4rem";
+    d.querySelector(".input-area-container").prepend(alertBox);
     dialogue.showAlert(
         {
             target: alertBox,

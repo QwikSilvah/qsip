@@ -133,8 +133,8 @@ background-color: red;
 }
 
 .previous:hover, .next:hover {
-    background-color: rgba(55, 206, 201, .5);
-    color: black;
+    /*background-color: rgba(55, 206, 201, .5);
+    color: black;*/
 }
 
 .time {
@@ -168,8 +168,8 @@ background-color: red;
 }
 
 .edit-item:hover {
-    background-color: rgba(55, 206, 201, .5);
-
+/*    background-color: rgba(55, 206, 201, .5);
+*/
 }
 
 a.scroll-up {
