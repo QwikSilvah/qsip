@@ -1,5 +1,7 @@
 // JavaScript source code
 
+//ensure dialogue.js
+
 const d = document;
 
 let ips; //setting up localStorage
@@ -78,6 +80,10 @@ v.reset.addEventListener("click", () => dialogue.showModal({
     reject: "No",
     header: "Clear List?",
     content: "Do you wish to remove all items?",
+    styles: {
+        header: "primary",
+        footer: "light"
+    },
     callback: () => {
         if (document.querySelector(".corroborate")) {
             document.querySelector(".corroborate").addEventListener("click", (event) => {
@@ -100,6 +106,10 @@ v.historyRemove.addEventListener("click", () => dialogue.showModal({
     reject: "No",
     header: "Remove From History?",
     content: "This action cannot be reversed",
+    styles: {
+        header: "warning",
+        footer: "light"
+    },
     callback: () => {
         if (document.querySelector(".corroborate")) {
             document.querySelector(".corroborate").addEventListener("click", (event) => {
@@ -114,6 +124,10 @@ v.historyClear.addEventListener("click", () => dialogue.showModal({
     reject: "No",
     header: "Clear Entire History?",
     content: "This action cannot be reversed",
+    styles: {
+        header: "danger",
+        footer: "light"
+    },
     callback: () => {
         if (document.querySelector(".corroborate")) {
             document.querySelector(".corroborate").addEventListener("click", (event) => {
@@ -206,6 +220,10 @@ function validate() {
         reject: "No",
         header: "Select Items?",
         content: "Do you wish to proceed?",
+        styles: {
+            header: "primary",
+            footer: "light"
+        },
         callback: () => {
             if (document.querySelector(".corroborate")) {
                 document.querySelector(".corroborate").addEventListener("click", (event) => {
@@ -345,7 +363,11 @@ function warningMsg() {
     dialogue.showModal({
         header: `Unable to handle your request.`,
         content: `Please make sure you entered everything correctly.`,
-        reject: "Ok"
+        reject: "Ok",
+        styles: {
+            header: "warning",
+            footer: "light"
+        }
     });
 
 }

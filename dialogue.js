@@ -16,12 +16,13 @@ const dialogue = {
             target.classList.add("alert-dismissible");
             target.innerHTML += ` <button class="btn-close" data-bs-dismiss="alert"></button>`;
         }
-        //setting width
+        //setting styles
         target.style.width = width || "100%";
+        target.style.marginBottom = "0px";
         target.style.display = "block";
 
         //setting duration
-        const displayDuration = duration ||5000;
+        const displayDuration = duration || 5000;
         window.setTimeout(() => {
             target.style.display = "none";
         }, displayDuration);
@@ -29,16 +30,16 @@ const dialogue = {
 
     },        
     
-    showModal({ type, alertClass, accept, reject, header, content, callback }) {
+    showModal({ type, accept, reject, header, content, styles, callback }) {
         const modalActivateButton = document.querySelector(".lasso-modal");
 
         //header
         document.querySelector(".modal .modal-title").innerHTML =
-            `${header ? header : ""}`;
+            `${header ? header : ""}`;        
 
         //content
         document.querySelector(".modal .modal-body").innerHTML =
-            `${content ? content : ""}`;
+            `${content ? content : ""}`;        
 
         //footer
         const modalFooter = document.querySelector(".modal .modal-footer");
@@ -58,6 +59,21 @@ const dialogue = {
         }
         else {
             modalFooter.querySelector(".disassociate").classList.add("btn-primary");
+        }               
+
+        if (styles) {
+            if (styles.header) {
+                const headerClass = styles.header.includes("bg-") ? styles.header : "bg-" + styles.header;
+                document.querySelector(".modal .modal-header").classList.add(headerClass);
+            }
+            if (styles.content) {
+                const contentClass = styles.content.includes("bg-") ? styles.content : "bg-" + styles.content;
+                document.querySelector(".modal .modal-body").classList.add(contentClass);
+            }
+            if (styles.footer) {
+                const footerClass = styles.footer.includes("bg-") ? styles.footer : "bg-" + styles.footer;
+                document.querySelector(".modal .modal-footer").classList.add(footerClass);
+            }
         }
 
         modalActivateButton.click();
