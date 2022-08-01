@@ -83,7 +83,7 @@ const dialogue = {
                 }
 
                 if (styles.header.text) {
-                    headerElement.style.color = styles.header.text
+                    headerElement.style.color = styles.header.text;
                 }
             }
 

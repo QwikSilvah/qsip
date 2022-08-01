@@ -82,7 +82,8 @@ v.reset.addEventListener("click", () => dialogue.showModal({
     content: "Do you wish to remove all items?",
     styles: {
         header: {
-            background: "info"
+            background: "info",
+            text: "black"
         },
         footer: "light",
     },
@@ -110,7 +111,8 @@ v.historyRemove.addEventListener("click", () => dialogue.showModal({
     content: "This action cannot be reversed",
     styles: {
         header: {
-            background: "warning"
+            background: "warning",
+            text: "black"
         },
         footer: "light"
     },
@@ -376,7 +378,8 @@ function warningMsg() {
         reject: "Ok",
         styles: {
             header: {
-                background: "warning"
+                background: "warning",
+                text: "black"
             },
             footer: "light"
         }
