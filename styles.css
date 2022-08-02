@@ -100,15 +100,15 @@ background-color: red;
 }
 
 .extract {
-    color: black;
-    font-weight: bold;
+/*    color: black;
+*/    font-weight: bold;
 }
 
-    .extract:hover {
-        background-color: rgba(55, 206, 201, .5);
-        color: black;
-        border: 2px solid black;
-    }
+.extract:hover {
+    /*background-color: rgba(55, 206, 201, .5);
+    color: black;
+    border: 2px solid black;*/
+}
 
 .result-container {    
     margin-top: 0px;
@@ -196,7 +196,7 @@ a.scroll-up {
 }
 
 .modal {
-    /*padding-top: 25vh;*/
+    padding-top: 10vh;
 }
 
 /* Medium devices (landscape tablets, 768px and lower) */
@@ -205,3 +205,4 @@ a.scroll-up {
         display: none;
     }
 }
+
