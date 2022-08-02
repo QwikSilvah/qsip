@@ -1,6 +1,6 @@
 // JavaScript source code
 
-//ensure bootstrap 5 and boilerplate html for modal
+//Ensure bootstrap 5 and modal markup
 
 const dialogue = {
     showAlert({ target, alertClass, content, close, width, duration }) {
@@ -124,3 +124,4 @@ const dialogue = {
         }
     },
 }
+

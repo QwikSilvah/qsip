@@ -373,8 +373,8 @@ function getValues() {
 
 function warningMsg() {
     dialogue.showModal({
-        header: `Unable to handle your request.`,
-        content: `Please make sure you entered everything correctly.`,
+        header: `Unable to handle your request`,
+        content: `Please make sure you entered everything correctly`,
         reject: "Ok",
         styles: {
             header: {
@@ -446,7 +446,7 @@ function showEditAlert() {
     const alertBox = d.createElement("div");
     alertBox.style.paddingTop = ".4rem";
     alertBox.style.paddingBottom = ".4rem";
-    d.querySelector(".input-area-container").prepend(alertBox);
+    d.querySelector(".input-container").prepend(alertBox);
     dialogue.showAlert(
         {
             target: alertBox,
