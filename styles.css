@@ -42,8 +42,8 @@ button {
 }
 
 .input-area .add:hover {
-    background-color: rgb(55, 206, 201, .5);
-    color: black;
+    /*background-color: rgb(55, 206, 201, .5);
+    color: black;*/
 }
 
 ol {
@@ -82,6 +82,10 @@ ol.list {
 
 .close-btn:hover {
 background-color: red;
+}
+
+.edit-list-item {
+    /*border: none;*/
 }
 
 .add {
@@ -142,6 +146,10 @@ background-color: red;
     text-align: center;
 }
 
+.full-time {
+    text-align: center;
+}
+
 .selected {
     font-weight: bold;
     color: green;
@@ -196,7 +204,7 @@ a.scroll-up {
 }
 
 .modal {
-    padding-top: 5vh;
+    padding-top: 10vh;
 }
 
 /* Medium devices (landscape tablets, 768px and lower) */
