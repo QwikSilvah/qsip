@@ -23,6 +23,7 @@ let currentInputValue;
 
 const v = {
     list: d.querySelector(".list"),
+    inputForm: d.querySelector("#item-input-form"),
     input: d.querySelector(".input"),
     addButton: d.querySelector(".add"),
     selections: d.querySelector(".number"),
@@ -72,6 +73,7 @@ const v = {
 
 
 v.addButton.addEventListener("click", addItem);
+v.inputForm.addEventListener("submit", addItem);
 d.body.addEventListener("keyup", checkKey);
 
 v.reset.addEventListener("click", () => dialogue.showModal({
@@ -179,7 +181,7 @@ function checkKey(event) {
     event.preventDefault();
     if (event.key !== "Enter") return;
     if (!event.shiftKey) {
-        addItem();
+        //addItem();
         return;
     }
     validate();
