@@ -10,7 +10,7 @@ const ext = {
         return array;
     },
 
-    howLongAgo(dateTime) {
+    age(dateTime) {
 
         function quotient(a, b) {
             return Math.floor(a / b);
@@ -53,7 +53,7 @@ const ext = {
                 return new Date(actualDateTime).toDateString();
         }
 
-    }, //howLongAgo ends here
+    }, //age ends here
 
     getDay(epoch) {
         const x = new Date(epoch).getUTCDay();
@@ -93,5 +93,4 @@ const ext = {
     }
        
 }
-
 

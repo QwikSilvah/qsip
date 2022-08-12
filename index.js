@@ -85,7 +85,7 @@ v.reset.addEventListener("click", () => dialogue.showModal({
     styles: {
         header: {
             background: "info",
-            text: "black"
+            color: "black"
         },
         footer: "light",
     },
@@ -114,7 +114,7 @@ v.historyRemove.addEventListener("click", () => dialogue.showModal({
     styles: {
         header: {
             background: "warning",
-            text: "black"
+            color: "black"
         },
         footer: "light"
     },
@@ -135,7 +135,7 @@ v.historyClear.addEventListener("click", () => dialogue.showModal({
     styles: {
         header: {
             background: "danger",
-            text: "white"
+            color: "white"
         },
         footer: "light"
     },
@@ -197,7 +197,7 @@ function renderHTML(index=0) {
     const { selected, rejected, time, input } = resObj;
     console.log("create html");
 
-    v.time.innerHTML = `${ext.howLongAgo(time)}<br class="age-ordinal-break" />(${(ips.length - currentStorageIndex)}/${ips.length})`;
+    v.time.innerHTML = `${ext.age(time)}<br class="age-ordinal-break" />(${(ips.length - currentStorageIndex)}/${ips.length})`;
         
     for (let item of selected) {
         v.results.innerHTML += `<p class="selected">${item}</p>`
@@ -234,7 +234,7 @@ function validate() {
         styles: {
             header: {
                 background: "primary",
-                text: "white"
+                color: "white"
             },
             footer: "light"
         },
@@ -368,7 +368,7 @@ function getValues() {
     const values = []
     const list = getList();
     for (let item of list) {
-        values.push(item.querySelector("span").innerText);
+        values.push(item.querySelector("span").innerText.trim());
     }
     return values;
 }
@@ -381,7 +381,7 @@ function warningMsg() {
         styles: {
             header: {
                 background: "warning",
-                text: "black"
+                color: "black"
             },
             footer: "light"
         }
@@ -440,6 +440,10 @@ function editHistory() {
     window.setTimeout(scrollToTop, 500);
     //v.input.focus();
     v.reset.removeAttribute("disabled");
+
+    if (getList().length > 2) {
+        v.selections.removeAttribute("disabled");
+    }
 
     onChange();
 }
