@@ -82,8 +82,8 @@ const dialogue = {
                     headerElement.classList.add(headerClass);
                 }
 
-                if (styles.header.text) {
-                    headerElement.style.color = styles.header.text;
+                if (styles.header.color) {
+                    headerElement.style.color = styles.header.color;
                 }
             }
 
