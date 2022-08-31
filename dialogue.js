@@ -3,7 +3,7 @@
 //Ensure bootstrap 5 and modal markup
 
 const dialogue = {
-    showAlert({ target, alertClass, content, close, width, duration }) {
+    showAlert({ target, alertClass, content, closeButton, width, fade }) {
         target.classList.add("alert");
         if (alertClass) {
             if (alertClass.includes("alert-")) target.classList.add(alertClass);
@@ -12,7 +12,7 @@ const dialogue = {
         if (content) {
             target.innerHTML = content;
         }
-        if (close) {
+        if (closeButton) {
             target.classList.add("alert-dismissible");
             target.innerHTML += ` <button class="btn-close" data-bs-dismiss="alert"></button>`;
         }
@@ -22,10 +22,12 @@ const dialogue = {
         target.style.display = "block";
 
         //setting duration
-        const displayDuration = duration || 5000;
-        window.setTimeout(() => {
-            target.style.display = "none";
-        }, displayDuration);
+        if (fade) {
+            const displayDuration = parseInt(fade) || 5000;
+            window.setTimeout(() => {
+                target.remove();
+            }, displayDuration);
+        }
     },        
     
     showModal({ type, accept, reject, header, content, styles, callback }) {
