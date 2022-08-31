@@ -450,19 +450,26 @@ function editHistory() {
 
 function showEditAlert() {
     const alertBox = d.createElement("div");
+
     alertBox.style.paddingTop = ".4rem";
     alertBox.style.paddingBottom = ".4rem";
+    
     d.querySelector(".input-container").prepend(alertBox);
+
     dialogue.showAlert(
         {
             target: alertBox,
             alertClass: "primary",
             content: "Double click item to edit",
-            close: true,
+            closeButton: true,
             width: "100%",
-            duration: 3000
+            fade: true
         }
     );
+
+    const margins = .5;
+    const unit = "rem";
+    [alertBox.style.marginBottom, alertBox.style.marginTop] = [`${margins}${unit}`, `${margins}${unit}`];
 }
 
 function removeHistoryItem() {
