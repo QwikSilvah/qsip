@@ -94,3 +94,4 @@ const ext = {
        
 }
 
+module.exports = ext;
